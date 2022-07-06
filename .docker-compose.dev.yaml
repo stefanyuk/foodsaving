@@ -1,0 +1,26 @@
+version: "3.8"
+
+services:
+  food_app:
+    image: food-app:latest
+    build: .
+    ports:
+      - "8080:8000"
+    volumes:
+      - ./:/app
+    depends_on:
+      - food_app_db
+
+  food_app_db:
+    image: postgres:14.2
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_NAME: ${POSTGRES_NAME}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+    volumes:
+      - data-volume:/var/lib/postgresql/data
+
+volumes:
+  data-volume:
