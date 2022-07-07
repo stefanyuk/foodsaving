@@ -13,7 +13,7 @@ ENV PATH="$POETRY_HOME/bin:$PATH"
 FROM python-base as builder
 
 RUN apk update \
-    && apk add libffi-dev build-base curl
+    && apk add libffi-dev build-base curl gcc postgresql-dev python3-dev musl-dev
 
 RUN curl -sSL https://raw.githubusercontent.com/sdispater/poetry/master/get-poetry.py | python
 
@@ -27,6 +27,9 @@ RUN poetry install --no-dev
 FROM python-base as production
 
 WORKDIR /app
+
+RUN apk update \
+    && apk add postgresql-dev
 
 COPY --from=builder $POETRY_HOME $POETRY_HOME
 
