@@ -7,12 +7,10 @@ authors = ["Artem Marhaza <artemmrgz@gmail.com>", "Andriy Stefanyuk <stefanyuk.a
 [tool.poetry.dependencies]
 python = "^3.10"
 Django = "^4.0.6"
+psycopg2-binary = "^2.9.3"
 
 [tool.poetry.dev-dependencies]
 poethepoet = "^0.15.0"
-
-[tool.poe.tasks]
-runserver = "python manage.py runserver"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
