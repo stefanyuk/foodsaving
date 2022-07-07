@@ -1,0 +1,45 @@
+version: "3.8"
+
+services:
+  food_app:
+    image: food-app:latest
+    build: .
+    ports:
+      - "8080:8000"
+    environment:
+      SQL_DB: ${SQL_DB}
+      SQL_USER: ${SQL_USER}
+      SQL_PASSWORD: ${SQL_PASSWORD}
+      SQL_HOST: ${SQL_HOST}
+    volumes:
+      - ./:/app:ro
+    depends_on:
+      - db_migrations
+
+  db_migrations:
+    image: food-app:latest
+    build: .
+    command: ["poetry", "run", "python", "manage.py", "migrate"]
+    environment:
+      SQL_DB: ${SQL_DB}
+      SQL_USER: ${SQL_USER}
+      SQL_PASSWORD: ${SQL_PASSWORD}
+      SQL_HOST: ${SQL_HOST}
+    depends_on:
+      - food_app_db
+    volumes:
+      - ./:/app:ro
+
+  food_app_db:
+    image: postgres:14.2
+    ports:
+      - "5432:5432"
+    environment:
+      SQL_DB: ${SQL_DB}
+      SQL_USER: ${SQL_USER}
+      SQL_PASSWORD: ${SQL_PASSWORD}
+    volumes:
+      - food-app-data:/var/lib/postgresql/data
+
+volumes:
+  food-app-data:
