@@ -7,10 +7,10 @@ services:
     ports:
       - "8080:8000"
     environment:
-      SQL_DB: ${SQL_DB}
-      SQL_USER: ${SQL_USER}
-      SQL_PASSWORD: ${SQL_PASSWORD}
-      SQL_HOST: ${SQL_HOST}
+      DB_NAME: ${DB_NAME}
+      DB_USER: ${DB_USER}
+      DB_PASSWORD: ${DB_PASSWORD}
+      DB_HOST: ${DB_HOST}
     volumes:
       - ./:/app:ro
     depends_on:
@@ -21,10 +21,10 @@ services:
     build: .
     command: ["poetry", "run", "python", "manage.py", "migrate"]
     environment:
-      SQL_DB: ${SQL_DB}
-      SQL_USER: ${SQL_USER}
-      SQL_PASSWORD: ${SQL_PASSWORD}
-      SQL_HOST: ${SQL_HOST}
+      DB_NAME: ${DB_NAME}
+      DB_USER: ${DB_USER}
+      DB_PASSWORD: ${DB_PASSWORD}
+      DB_HOST: ${DB_HOST}
     depends_on:
       - food_app_db
     volumes:
@@ -35,9 +35,9 @@ services:
     ports:
       - "5432:5432"
     environment:
-      SQL_DB: ${SQL_DB}
-      SQL_USER: ${SQL_USER}
-      SQL_PASSWORD: ${SQL_PASSWORD}
+      POSTGRES_DB: ${DB_NAME}
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
     volumes:
       - food-app-data:/var/lib/postgresql/data
 
