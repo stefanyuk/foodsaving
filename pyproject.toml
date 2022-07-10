@@ -26,4 +26,4 @@ api_test.sequence = [
 ]
 api_test.envfile = ".env.local.api_test"
 
-lint = "pylint ."
+lint = "pylint cheap_daily users restaurants"
