@@ -29,8 +29,7 @@ jobs:
         poetry install
     - name: Lint with pylint
       run: |
-        poetry run poe lint
-        poetry run pylint --exit-zero . | grep "Your code has been rated at"
+        poetry run pylint --exit-zero cheap_daily | grep "Your code has been rated at"
 
     - name: Unit tests
       run: |
