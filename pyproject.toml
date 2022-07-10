@@ -27,3 +27,5 @@ api_test.sequence = [
   { cmd = "poetry run pytest */api_tests" },
 ]
 api_test.envfile = ".env.local.api_test"
+
+lint = "pylint ."
