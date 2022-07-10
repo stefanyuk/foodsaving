@@ -15,3 +15,15 @@ poethepoet = "^0.15.0"
 [build-system]
 requires = ["poetry-core>=1.0.0"]
 build-backend = "poetry.core.masonry.api"
+
+[tool.poe.tasks]
+test.cmd = "poetry run pytest --cov=cheap_daily"
+test.envfile = ".env.local.api_test"
+
+api_test.sequence = [
+  { cmd =  "docker-compose -f docker-compose.api-test.yaml --env-file .env.local.api_test up -d" },
+  { cmd = "poetry run pytest" },
+]
+api_test.envfile = ".env.local.api_test"
+
+lint = "pylint ."
