@@ -15,3 +15,20 @@ poethepoet = "^0.15.0"
 [build-system]
 requires = ["poetry-core>=1.0.0"]
 build-backend = "poetry.core.masonry.api"
+
+[tool.poe.tasks.start]
+cmd = "docker-compose --env-file .env.local up"
+help = "starts the app locally inside the container"
+
+[tool.poe.tasks.stop]
+cmd = "docker-compose down"
+help = "stops the app running inside the container"
+
+[tool.poe.tasks.manage]
+cmd = "docker-compose -f docker-compose.utility.yaml run food-app-util"
+help = "runs utility container, with the help of which we can manage app. Add appropriate command at the end."
+
+
+[tool.poe.tasks.change_files_owner]
+cmd = "sudo chown $USER:$USER ."
+help = "changes owner of all files in the directory when command is being invoked to current user"

@@ -1,0 +1,11 @@
+version: "3.8"
+
+services:
+  food-app-util:
+    image: food-app:latest
+    build: .
+    entrypoint: ["poetry", "run", "python", "manage.py"]
+    env_file:
+      - .env.local
+    volumes:
+      - ./:/app
