@@ -1,0 +1,2 @@
+[run]
+omit = */unit_tests/*, */api_tests/*
