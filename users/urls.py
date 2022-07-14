@@ -1,7 +1,13 @@
 from django.urls import path
 
-from .views import create_user
+from .views import register_user, index, activate_user_profile, user_login
+
+
+app_name = 'users'
 
 urlpatterns = [
-    path("", create_user, name="create_user"),
+    path("register/", register_user, name="register_user"),
+    path("home/", index, name="home"),
+    path("activate/<uidb64>/<token>", activate_user_profile, name="activate"),
+    path("signin/", user_login, name="user_login")
 ]

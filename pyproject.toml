@@ -8,6 +8,7 @@ authors = ["Artem Marhaza <artemmrgz@gmail.com>", "Andriy Stefanyuk <stefanyuk.a
 python = "^3.10"
 Django = "^4.0.6"
 psycopg2-binary = "^2.9.3"
+django-environ = "^0.9.0"
 
 [tool.poetry.dev-dependencies]
 poethepoet = "^0.15.0"

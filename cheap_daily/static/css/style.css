@@ -1,0 +1,7 @@
+@import "registration_auth.css";
+@import "header.css";
+@import "home_page.css";
+
+* {
+    font-family: 'Jost';
+}

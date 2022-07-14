@@ -1,0 +1,47 @@
+/* USER REGISTRATION */
+
+.user_registration{
+    padding: 70px 0 150px 0;
+}
+
+.registration_info_outer{
+    margin: 0 auto;
+    width: 460px;
+}
+
+.registration_info_outer .register_btn{
+    background: linear-gradient(154.49deg, #519259 6.44%, #89D292 103.42%);
+    box-shadow: 15px 15px 60px rgba(81, 146, 89, 0.35);
+    border: none;
+    font-weight: 700;
+    font-size: 21px;
+}
+
+.registration_info_outer .register_btn:hover{
+    background: linear-gradient(154.49deg, #6abe74 6.44%, #89D292 103.42%);
+}
+
+
+.registration_info_outer .logo{
+    display: block;
+    margin: 0 auto;
+}
+
+.registration_info_outer .register_title{
+    font-style: normal;
+    font-weight: 400;
+    font-size: 56px;
+    color: #519259;
+    text-align: center;
+    margin-top: 30px;
+}
+
+.registration_info_outer .register_info_text{
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    letter-spacing: 0.1px;
+    color: #92929D;
+    text-align: center;
+    margin-top: 20px;
+}

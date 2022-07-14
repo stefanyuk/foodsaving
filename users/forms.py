@@ -1,10 +1,36 @@
 from django import forms
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth import password_validation
 
 from .models import User
 
 
-class UserForm(forms.ModelForm):
-    confirm_password = forms.CharField(max_length=255)
+class CreateUserForm(UserCreationForm):
+    """Class to represent fields that should be in the user creation form."""
+    password1 = forms.CharField(
+        label="Password",
+        strip=False,
+        widget=forms.PasswordInput(
+            attrs={
+                "autocomplete": "new-password",
+                "class": "form-control",
+                "placeholder": "Password"
+            }
+        ),
+        help_text=password_validation.password_validators_help_text_html(),
+    )
+    password2 = forms.CharField(
+        label="Password confirmation",
+        widget=forms.PasswordInput(
+            attrs={
+                "autocomplete": "new-password",
+                "class": "form-control",
+                "placeholder": "Confirm password"
+            }
+        ),
+        strip=False,
+        help_text="Enter the same password as before, for verification."
+    )
 
     class Meta:
         model = User
@@ -13,9 +39,20 @@ class UserForm(forms.ModelForm):
             "first_name",
             "last_name",
             "phone_number",
-            "password",
-            "confirm_password",
+            "password1",
+            "password2",
         ]
-
-    def clean_confirm_password(self):
-        pass
+        widgets = {
+            'email': forms.EmailInput(
+                attrs={"class": "form-control", "placeholder": "Email Address"}
+            ),
+            'first_name': forms.TextInput(
+                attrs={'class': 'form-control', "placeholder": "First Name"}
+            ),
+            'last_name': forms.TextInput(
+                attrs={'class': 'form-control', "placeholder": "Last Name"}
+            ),
+            'phone_number': forms.TextInput(
+                attrs={'class': 'form-control', "placeholder": "Phone Number"}
+            )
+        }

@@ -11,6 +11,12 @@ class User(AbstractUser):
     username = None
     phone_number = models.CharField(max_length=15, verbose_name="phone number")
     email = models.EmailField(unique=True, verbose_name="email address")
+    is_active = models.BooleanField(
+        verbose_name="Is user active",
+        default=False,
+        help_text="Designates whether this user should be treated as active."
+                  "Unselect this instead of deleting accounts."
+    )
 
     USERNAME_FIELD = "email"
     REQUIRED_FIELDS = []
