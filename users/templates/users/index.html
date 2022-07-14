@@ -14,7 +14,7 @@
                     </ul>
                     <ul class="auth_menu">
                         <li class="menu_item registration"><a class="menu_link" data-bs-toggle="modal" data-bs-target="#registerModal">Register</a></li>
-                        <li class="menu_item"><a class="menu_link" href="#">Login</a></li>
+                        <li class="menu_item"><a class="menu_link" href="{% url 'users:user_login' %}">Login</a></li>
                     </ul>
                 </nav>
             </div>
@@ -26,8 +26,8 @@
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal_btn_wrapper">
-                    <button class="btn btn-primary modal-btn" type="button">Individual</button>
-                    <button class="btn btn-primary modal-btn" type="button">Restaurant</button>
+                    <a class="btn btn-primary modal-btn btn_link" type="button" href="{% url 'users:register_user' %}">Individual</a>
+                    <a class="btn btn-primary modal-btn btn_link" type="button" href="#">Individual</a>
                 </div>
             </div>
         </div>
@@ -40,8 +40,8 @@
                     <div class="col-md-6">
                         <h1 class="title">Become a Rescue Ranger!</h1>
                         <div class="d-grid gap-2 col-6 mt-5">
-                          <button class="btn btn-primary home-btn" type="button">I am an individual</button>
-                          <button class="btn btn-primary mt-1 home-btn" type="button">I am a restaurant</button>
+                            <a class="btn btn-primary modal-btn btn_link" type="button" href="{% url 'users:register_user' %}">I am an individual</a>
+                            <a class="btn btn-primary modal-btn btn_link" type="button" href="#">I am a restaurant</a>
                         </div>
                     </div>
                     <div class="col-md-6">

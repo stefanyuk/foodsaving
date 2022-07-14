@@ -9,5 +9,5 @@ urlpatterns = [
     path("register/", register_user, name="register_user"),
     path("home/", index, name="home"),
     path("activate/<uidb64>/<token>", activate_user_profile, name="activate"),
-    path("signin/", user_login, name="user_login")
+    path("login/", user_login, name="user_login")
 ]

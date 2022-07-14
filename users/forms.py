@@ -56,3 +56,26 @@ class CreateUserForm(UserCreationForm):
                 attrs={'class': 'form-control', "placeholder": "Phone Number"}
             )
         }
+
+
+class SignInForm(forms.Form):
+    """Class to represent fields that should be in the authentication form."""
+
+    email = forms.EmailField(
+        label='Email address',
+        widget=forms.EmailInput(
+            attrs={
+                'class': 'form-control',
+                'placeholder': 'Email Address'
+            }
+        )
+    )
+    password = forms.CharField(
+        label='Password',
+        widget=forms.PasswordInput(
+            attrs={
+                'class': 'form-control',
+                'placeholder': 'Password'
+            }
+        )
+    )

@@ -95,3 +95,7 @@
     background: #F8FCF8;
     z-index: -1;
 }
+
+.btn_link{
+    text-decoration: none;
+}
