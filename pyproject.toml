@@ -13,6 +13,7 @@ psycopg2-binary = "^2.9.3"
 poethepoet = "^0.15.0"
 pytest-django = "^4.5.2"
 pytest-cov = "^3.0.0"
+pylint = "^2.14.4"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
@@ -27,3 +28,5 @@ api_test.sequence = [
   { cmd = "poetry run pytest */api_tests" },
 ]
 api_test.envfile = ".env.local.api_test"
+
+lint = "pylint cheap_daily users restaurants"
