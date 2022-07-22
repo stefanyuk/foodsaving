@@ -1,0 +1,6 @@
+@import "header.css";
+@import "account.css";
+
+* {
+    font-family: 'Jost';
+}
