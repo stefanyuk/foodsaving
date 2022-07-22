@@ -1,0 +1,103 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Account{% endblock %}
+{% block nav_bar %}
+<header>
+    <div class="container">
+        <div class="nav_wrapper">
+            <img src="{% static 'img/Logo.png' %}" alt="Cheap&Daily Logo" class="logo">
+            <nav>
+                <ul class="navigation_menu">
+                    <li class="menu_item"><a class="menu_link" href="#">Restaurants</a></li>
+                    <li class="menu_item"><a class="menu_link" href="#">Favourites</a></li>
+                    <li class="menu_item"><a class="menu_link navbar_text" href="{% url 'users:account' %}">Account</a></li>
+                </ul>
+                <ul class="auth_menu">
+                    <li class="menu_item"><a class="menu_link" href="#">Logout</a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</header>
+{% endblock %}
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 mt-5">
+            <h1 class="text-center">My Orders</h1>
+            {% if orders %}
+            {% for order in orders %}
+            <div class="card mb-3">
+              <div class="row g-0">
+                <div class="col-md-3">
+                  <img src="..." class="img-fluid rounded-start" alt="Restaurant img">
+                </div>
+                  <div class="col-md-7">
+                      <div class="card-body">
+                        <h5 class="card-title">{{order.post.restaurant.name }}</h5>
+                        <p class="card-text">Purchased {{ order.date_created }}</p>
+                        <p class="card-text">Price </p>
+                      </div>
+                  </div>
+                  <div class="col-md-2 d-flex align-items-center">
+                      <div>
+                          {% if order.review %}
+                          <a class="btn btn-primary me-md-2 rate_btn" type="button" href="#">View Review</a>
+                          {% else %}
+                          <a class="btn btn-primary me-md-2 rate_btn" type="button" href="#">Rate</a>
+                          {% endif %}
+                      </div>
+                  </div>
+              </div>
+            </div>
+            {% endfor %}
+            {% else %}
+            <h3 class="text-center">No Orders Yet</h3>
+            {% endif %}
+        </div>
+        <div class="col-md-5 mt-5">
+
+            <h1 class="text-center">Update Information</h1>
+            {{ update_form.errors }}
+            <div class="form_outer">
+            <form method="POST" action="">
+               {% csrf_token %}
+                <div class="row">
+                    <div class="col mt-3 d-grid">
+                        <label>First Name</label>
+                        {{ update_form.first_name }}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col mt-3 d-grid">
+                        <label>Last Name</label>
+                        {{ update_form.last_name }}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col mt-3 d-grid">
+                        <label>Phone Number</label>
+                        {{ update_form.phone_number }}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col mt-3 d-grid">
+                        <label>Email</label>
+                        {{ update_form.email }}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col mt-3">
+                        <button class="btn btn-primary save_btn" type="submit">Save Changes</button>
+                    </div>
+                    <div class="col mt-3">
+                        <a class="btn btn-primary modal-btn reset_psw_btn" type="button" href="{% url 'users:password_change' %}">Change Password</a>
+                    </div>
+                </div>
+            </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

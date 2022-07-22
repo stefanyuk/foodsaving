@@ -1,0 +1,76 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <div class="gradient-yellow"></div>
+    <header>
+        <div class="container">
+            <div class="nav_wrapper">
+                <img src="{% static 'img/Logo.png' %}" alt="Cheap&Daily Logo" class="logo">
+                <nav>
+                    <ul class="navigation_menu">
+                        <li class="menu_item"><a class="menu_link" href="#">Home</a></li>
+                        <li class="menu_item"><a class="menu_link" href="#">About</a></li>
+                        <li class="menu_item"><a class="menu_link" href="#">How it works</a></li>
+                    </ul>
+                    <ul class="auth_menu">
+                        <li class="menu_item registration"><a class="menu_link" data-bs-toggle="modal" data-bs-target="#registerModal">Register</a></li>
+                        <li class="menu_item"><a class="menu_link" href="{% url 'users:user_login' %}">Login</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- MODAL ON REGISTER -->
+    <div class="modal fade" id="registerModal" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal_btn_wrapper">
+                    <a class="btn btn-primary modal-btn btn_link" type="button" href="{% url 'users:register_user' %}">Individual</a>
+                    <a class="btn btn-primary modal-btn btn_link" type="button" href="#">Individual</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <section class="home">
+        <div class="container">
+            <div class="home_content_wrapper">
+                <div class="row">
+                    <div class="col-md-6">
+                        <h1 class="title">Become a Rescue Ranger!</h1>
+                        <div class="d-grid gap-2 col-6 mt-5">
+                            <a class="btn btn-primary modal-btn btn_link" type="button" href="{% url 'users:register_user' %}">I am an individual</a>
+                            <a class="btn btn-primary modal-btn btn_link" type="button" href="#">I am a restaurant</a>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                       <img class="home_img" src="{% static 'img/home-food.png' %}" alt="Home-Food Image">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="about">
+        <div class="gradient-green"></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <img class="about_img" src="{% static 'img/healthy-food-about.jpg' %}" alt="Healthy-food-img">
+                </div>
+                <div class="col-md-6">
+                    <h2 class="about_title">About us</h2>
+                    <div class="about_text">
+                        Lorem ipsum dolor sit amet, consetetur sadipscing elitr,
+                        sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,
+                        sed diam
+                        Lorem ipsum dolor sit amet, consetetur sadipscing elitr,
+                        sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,
+                        sed diam voluptua.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

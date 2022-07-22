@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Create User{% endblock %}
+{% block content %}
+    <section class="user_registration">
+        <div class="registration_info_outer">
+            <img src="{% static 'img/Logo.png' %}" alt="Cheap&Daily Logo" class="logo">
+            <h3 class="register_title">Register</h3>
+            <div class="register_info_text">
+                Let’s Sign up first to enter into Cheap & Daily Website. Uh She Up!
+            </div>
+            <div class="form_outer">
+                {{ form.errors }}
+                <form method="POST" action="">
+                    {% csrf_token %}
+                    <div class="row">
+                        <div class="col mt-5">
+                            {{ form.first_name }}
+                        </div>
+                        <div class="col mt-5">
+                            {{ form.last_name }}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col mt-2">
+                            {{ form.phone_number }}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col mt-2">
+                            {{ form.email }}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col mt-2">
+                            {{ form.password1 }}
+                        </div>
+                        <div class="col mt-2">
+                            {{ form.password2 }}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col mt-2">
+                            <div class="d-grid">
+                                <button class="btn btn-primary register_btn" type="submit">Get Started</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+{% endblock %}
